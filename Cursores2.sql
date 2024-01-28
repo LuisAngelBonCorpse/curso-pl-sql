@@ -1,0 +1,20 @@
+DECLARE
+    
+    CURSOR C1 IS SELECT * FROM regions;
+    V1 regions%rowtype;
+    
+BEGIN
+    OPEN C1;
+    
+    FETCH C1 INTO V1;
+    
+    DBMS_OUTPUT.PUT_LINE(V1.REGION_NAME);
+    
+    FETCH C1 INTO V1; --CUANDO SE LE VUELVE A LLAMAR TAMBIEN AVANZA A LA SIGUIENTE LINEA
+    
+    DBMS_OUTPUT.PUT_LINE(V1.REGION_NAME);
+    
+    CLOSE C1;
+    
+    
+END;

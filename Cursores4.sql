@@ -1,0 +1,8 @@
+BEGIN
+
+    FOR i IN (SELECT * FROM REGIONS) LOOP
+        DBMS_OUTPUT.PUT_LINE(i.REGION_NAME);   
+    END LOOP;
+    
+
+END;

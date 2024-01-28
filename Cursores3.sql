@@ -1,0 +1,33 @@
+DECLARE
+
+    CURSOR C1 IS SELECT * FROM REGIONS;
+
+    V1 REGIONS%ROWTYPE;
+
+BEGIN
+
+    OPEN C1;
+
+    LOOP
+
+        FETCH C1 INTO V1;
+
+        EXIT WHEN C1%NOTFOUND;
+
+        DBMS_OUTPUT.PUT_LINE(V1.REGION_NAME);
+
+    END LOOP;
+    
+    CLOSE C1;
+    
+    --Con FOR
+    DBMS_OUTPUT.PUT_LINE('------------------------------------------------');
+        
+    FOR i IN C1 LOOP
+        DBMS_OUTPUT.PUT_LINE(i.REGION_NAME);   
+    END LOOP;
+    
+    --LA APERTURA Y EL CIERRE DEL CURSOR ESTAN IMPLICITOS EN EL BUCLE FOR, ADEMAS DEL FETCH
+    
+
+END;
